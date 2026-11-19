@@ -1,24 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="A fictional certificate verification page demo for frontend practice.">
-<title>Certificate Verification Demo</title>
-<style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;background:#f3f5f9;color:#202b3c;font-family:Arial,Helvetica,sans-serif;display:flex;align-items:center;justify-content:center}
-.page{width:min(1120px,100%)}.notice{padding:15px 18px;margin-bottom:18px;border:2px solid #b7791f;border-radius:10px;background:#fff7e8;color:#784600;font-weight:700;text-align:center;line-height:1.5}
-.certificate{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px #18243a1a}.certificate img{display:block;width:100%;height:auto}
-footer{text-align:center;color:#667085;font-size:13px;margin-top:16px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPTEL Online Certification - Maushami Shaw</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+            overflow-x: hidden;
+        }
+        .certificate-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1120px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e0e0e0;
+            background: #fff;
+            line-height: 0;
+        }
+        .certificate-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .qr-overlay {
+            position: absolute;
+            left: 51.05%;
+            top: 91.95%;
+            width: 5.35%;
+            aspect-ratio: 1 / 1;
+            background-color: #ffffff;
+            padding: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .qr-overlay img,
+        .qr-overlay canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-<main class="page">
-<div class="notice">DEMO PROJECT — NOT AN OFFICIAL NPTEL WEBSITE OR CERTIFICATE. All names and certificate details shown here are fictional.</div>
-<section class="certificate" aria-label="Fictional sample certificate">
-<img src="./demo-certificate.svg" alt="Fictional sample certificate clearly marked demo only">
-</section>
-<footer>Created for static-site and GitHub Pages practice. No affiliation with NPTEL or any educational institution.</footer>
-</main>
+
+    <div class="certificate-wrapper">
+        <img src="./certificate.png" alt="NPTEL Certificate - Maushami Shaw" class="certificate-img">
+
+        <a href="https://app.netlify.com/projects/beta-nptel-ac-in-verify-noc-hsfv-he2f"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="qr-overlay"
+           id="qr-container"
+           title="Scan or click to verify certificate">
+        </a>
+    </div>
+
+    <script>
+        new QRCode(document.getElementById("qr-container"), {
+            text: "https://app.netlify.com/projects/beta-nptel-ac-in-verify-noc-hsfv-he2f",
+            width: 256,
+            height: 256,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    </script>
+
 </body>
 </html>
